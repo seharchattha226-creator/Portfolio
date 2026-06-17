@@ -20,13 +20,15 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
+    // Use Formspree for contact form (free and easy!)
+    const formspreeUrl = 'https://formspree.io/f/mleqyedq'; // Replace with your Formspree endpoint!
+
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? 'http://localhost:5001' : '');
-      const API_URL = `${API_BASE}/api/contact`;
-      const response = await fetch(API_URL, {
+      const response = await fetch(formspreeUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(formData)
       });
