@@ -20,17 +20,13 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Use Formspree for contact form (free and easy!)
-    const formspreeUrl = 'https://formspree.io/f/mleqyedq'; // Replace with your Formspree endpoint!
-
+    // Use Netlify Forms for contact form
+    const form = e.target;
     try {
-      const response = await fetch(formspreeUrl, {
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
       });
 
       if (response.ok) {
@@ -136,7 +132,14 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              onSubmit={handleSubmit} 
+              className="glass-card p-8 space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-400 ml-1">Your Name</label>
