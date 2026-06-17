@@ -7,29 +7,6 @@ const Hero = () => {
   const [text, setText] = useState("");
   const fullText = PERSONAL_INFO.role;
   const [index, setIndex] = useState(0);
-  const [resumeUrl, setResumeUrl] = useState(PERSONAL_INFO.resume);
-
-  // Fetch resume from backend (fallback to local if fails)
-  useEffect(() => {
-    const fetchResume = async () => {
-      const API_BASE = import.meta.env.DEV ? 'http://localhost:5001' : '';
-      try {
-        const res = await fetch(`${API_BASE}/api/resume`);
-        const data = await res.json();
-        if (data.success) {
-          if (data.data.url.startsWith("http")) {
-            setResumeUrl(data.data.url);
-          } else {
-            const filename = encodeURIComponent(data.data.filename);
-            setResumeUrl(`${API_BASE}/uploads/${filename}`);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching resume:", error);
-      }
-    };
-    fetchResume();
-  }, []);
 
   useEffect(() => {
     if (index < fullText.length) {
@@ -90,8 +67,8 @@ const Hero = () => {
               Contact Me
             </motion.a>
             <motion.a
-              href={resumeUrl || '#'}
-              download="Sehar-Fiaz-Resume.html"
+              href="./Sehar-Fiaz-Resume.pdf"
+              download="Sehar-Fiaz-Resume.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:from-purple-600/30 hover:to-blue-600/30 flex items-center gap-2 transition-all duration-300"

@@ -21,7 +21,8 @@ const Contact = () => {
     setStatus('loading');
 
     try {
-      const API_URL = import.meta.env.DEV ? 'http://localhost:5001/api/contact' : '/api/contact';
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || (import.meta.env.DEV ? 'http://localhost:5001' : '');
+      const API_URL = `${API_BASE}/api/contact`;
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
