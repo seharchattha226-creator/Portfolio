@@ -11,22 +11,25 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
-
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));        
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
 
-    // Use Netlify Forms for contact form
-    const form = e.target;
+    // Use Formspree for contact form (free and easy!)
+    const formspreeUrl = 'https://formspree.io/f/mleqyedq';
+
     try {
-      const response = await fetch('/', {
+      const response = await fetch(formspreeUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString(),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
@@ -47,7 +50,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">    
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Get In <span className="text-gradient">Touch</span></h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
@@ -64,7 +67,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
+              <h3 className="text-2xl font-bold mb-8">Contact Information</h3>  
               <div className="space-y-6">
                 <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-4 group">
                   <div className="p-4 bg-purple-500/10 rounded-2xl text-purple-500 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
@@ -77,7 +80,7 @@ const Contact = () => {
                 </a>
 
                 <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-4 group">
-                  <div className="p-4 bg-blue-500/10 rounded-2xl text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                  <div className="p-4 bg-blue-500/10 rounded-2xl text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">     
                     <Phone size={24} />
                   </div>
                   <div>
@@ -86,23 +89,23 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a 
+                <a
                   href={`https://wa.me/${whatsappNumber}?text=Hello%20Sehar!%20I%27d%20like%20to%20get%20in%20touch.`}
-                  target="_blank" 
-                  rel="noreferrer" 
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-4 bg-green-500/10 rounded-2xl text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                  <div className="p-4 bg-green-500/10 rounded-2xl text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">  
                     <MessageCircle size={24} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">WhatsApp Me</p>
+                    <p className="text-sm text-gray-500">WhatsApp Me</p>        
                     <p className="text-lg font-medium text-white">Message on WhatsApp</p>
                   </div>
                 </a>
 
                 <div className="flex items-center gap-4 group">
-                  <div className="p-4 bg-pink-500/10 rounded-2xl text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">
+                  <div className="p-4 bg-pink-500/10 rounded-2xl text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">     
                     <MapPin size={24} />
                   </div>
                   <div>
@@ -132,14 +135,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true" 
-              onSubmit={handleSubmit} 
-              className="glass-card p-8 space-y-6"
-            >
-              <input type="hidden" name="form-name" value="contact" />
+            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-400 ml-1">Your Name</label>
@@ -150,7 +146,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"  
                   />
                 </div>
                 <div className="space-y-2">
@@ -162,7 +158,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="john@example.com"
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"  
                   />
                 </div>
               </div>
@@ -175,7 +171,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Project Inquiry"
                   required
-                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"
+                  className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-purple-500/50 transition-colors"    
                 />
               </div>
               <div className="space-y-2">
