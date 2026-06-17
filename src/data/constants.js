@@ -28,18 +28,6 @@ export const PERSONAL_INFO = {
   bio: "Full Stack Web Developer passionate about creating responsive, interactive, and user-focused web applications. With training in both frontend and backend development, I focus on building modern web experiences through creativity and code."
 };
 
-// Import images
-import voidCanvas from '../assets/images/void-canvas.png';
-import healthAi from '../assets/images/Health-Ai.jpg';
-import aurexisWatches from '../assets/images/Auxeries-watches.jpg';
-import confessionPlatform from '../assets/images/confession-platform.jpg';
-import crypto from '../assets/images/crypto.jpg';
-import fintech from '../assets/images/fintech.png';
-import travelExplorer from '../assets/images/travel-explorer.jpg';
-import uniqueWeb from '../assets/images/unique-web.jpg';
-import cynthiaUgwu from '../assets/images/cynthia-ugwu-clone.png';
-import model3D from '../assets/images/3D-model.jpg';
-
 export const SKILLS = [
   { name: "HTML5", level: 95, category: "Frontend" },
   { name: "CSS3", level: 90, category: "Frontend" },
@@ -71,7 +59,7 @@ export const PROJECTS = [
     title: "Void Canva",
     category: "AI",
     description: "A creative AI platform designed for digital artists and designers to generate and visualize unique artistic concepts seamlessly.",
-    image: voidCanvas,
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Tailwind CSS", "Framer Motion", "Node.js"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7456651759474647040/",
     github: "https://github.com/seharchattha226-creator/voidcanvas-ai",
@@ -83,7 +71,7 @@ export const PROJECTS = [
     title: "Health AI",
     category: "Healthcare",
     description: "Intelligent healthcare solution utilizing AI to provide diagnostic insights and health recommendations for modern users.",
-    image: healthAi,
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "OpenAI API", "Tailwind CSS", "Framer Motion"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7455197773664071680/",
     github: "https://github.com/seharchattha226-creator/Health-AI",
@@ -95,7 +83,7 @@ export const PROJECTS = [
     title: "Unique Web",
     category: "Web App",
     description: "A highly interactive and modern web application focusing on exceptional user experience and cutting-edge design patterns.",
-    image: uniqueWeb,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Tailwind CSS", "GSAP", "Framer Motion"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7452376786677612544/",
     github: "https://github.com/seharchattha226-creator",
@@ -107,7 +95,7 @@ export const PROJECTS = [
     title: "Crypto Website",
     category: "Crypto",
     description: "A comprehensive cryptocurrency dashboard featuring real-time data tracking, interactive charts, and secure user interface.",
-    image: crypto,
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "CoinGecko API", "Tailwind CSS", "Chart.js"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7448766089636802560/",
     github: "https://github.com/seharchattha226-creator/Crypto",
@@ -119,7 +107,7 @@ export const PROJECTS = [
     title: "Cynthia Ugwu Clone",
     category: "Clone",
     description: "A high-fidelity clone of the award-winning Cynthia Ugwu website, showcasing mastery in complex animations and layout.",
-    image: cynthiaUgwu,
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop",
     tech: ["HTML5", "CSS3", "JavaScript", "GSAP", "Locomotive Scroll"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7446935765642698752/",
     github: "https://github.com/seharchattha226-creator/Cynthia-Ugwu",
@@ -131,7 +119,7 @@ export const PROJECTS = [
     title: "Confession Platform",
     category: "Web App",
     description: "An anonymous social platform allowing users to share thoughts and experiences in a safe, moderated digital environment.",
-    image: confessionPlatform,
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Node.js", "MongoDB", "Tailwind CSS"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7442599685258780672/",
     github: "https://github.com/seharchattha226-creator/confessly-ultimate",
@@ -143,7 +131,7 @@ export const PROJECTS = [
     title: "Aurexis",
     category: "Luxury",
     description: "Premium watch brand showcase with elegant design, scroll-triggered animations, and high-end aesthetic appeal.",
-    image: aurexisWatches,
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Framer Motion", "Tailwind CSS"],
     linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7429943485991936000/",
     github: "https://github.com/seharchattha226-creator/AUREXIS-Time-Defined",
@@ -179,7 +167,7 @@ export const PROJECTS = [
     title: "Travel Explorer",
     category: "Travel",
     description: "Immersive travel planning platform with interactive maps and curated destination guides for modern explorers.",
-    image: travelExplorer,
+    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Google Maps API", "Tailwind CSS"],
     linkedin: "https://www.linkedin.com/posts/sehar-chattha-66195437a_webdevelopment-frontenddeveloper-html-activity-7423294770262802432-P4Qa",
     github: "https://github.com/seharchattha226-creator/travel-explorer-website",
@@ -191,7 +179,7 @@ export const PROJECTS = [
     title: "FinTech 3D",
     category: "FinTech",
     description: "Modern financial technology landing page with interactive 3D elements and secure data visualization components.",
-    image: fintech,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Three.js", "Framer Motion", "Tailwind CSS"],
     linkedin: "https://www.linkedin.com/posts/sehar-chattha-66195437a_webdesign-uiuxdesign-digitalexperience-activity-7421948873482534912-JH9X",
     github: "https://github.com/seharchattha226-creator/fintech",
@@ -203,7 +191,7 @@ export const PROJECTS = [
     title: "3D Website",
     category: "3D",
     description: "Advanced 3D website demonstration showcasing smooth navigation and complex spatial layouts in a browser environment.",
-    image: model3D,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
     tech: ["React.js", "Three.js", "Tailwind CSS"],
     linkedin: "https://www.linkedin.com/posts/sehar-chattha-66195437a_webdevelopment-frontenddeveloper-html-activity-7421925077635670017-idLv",
     github: "https://github.com/seharchattha226-creator/3D-website",
