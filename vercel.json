@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "root": ".",
-  "framework": "vite",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "experimentalServices": {
+    "frontend": {
+      "routePrefix": "/",
+      "src": "./",
+      "framework": "vite"
+    },
+    "backend": {
+      "routePrefix": "/api",
+      "src": "./backend",
+      "framework": "express"
+    }
+  }
 }
