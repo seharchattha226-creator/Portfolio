@@ -29,16 +29,16 @@ export const PERSONAL_INFO = {
 };
 
 // Import images
-import voidCanvas from '../assets/images/void canvas.png';
-import healthAi from '../assets/images/Health Ai.jpg';
-import aurexisWatches from '../assets/images/Auxeries watches.jpg';
-import confessionPlatform from '../assets/images/confession platform.jpg';
+import voidCanvas from '../assets/images/void-canvas.png';
+import healthAi from '../assets/images/Health-Ai.jpg';
+import aurexisWatches from '../assets/images/Auxeries-watches.jpg';
+import confessionPlatform from '../assets/images/confession-platform.jpg';
 import crypto from '../assets/images/crypto.jpg';
 import fintech from '../assets/images/fintech.png';
-import travelExplorer from '../assets/images/travel explorer.jpg';
-import uniqueWeb from '../assets/images/unique web.jpg';
-import cynthiaUgwu from '../assets/images/cynthia ugwu clone.png';
-import model3D from '../assets/images/3D model.jpg';
+import travelExplorer from '../assets/images/travel-explorer.jpg';
+import uniqueWeb from '../assets/images/unique-web.jpg';
+import cynthiaUgwu from '../assets/images/cynthia-ugwu-clone.png';
+import model3D from '../assets/images/3D-model.jpg';
 
 export const SKILLS = [
   { name: "HTML5", level: 95, category: "Frontend" },
