@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle, X } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/constants';
 import { useState } from 'react';
 
@@ -11,6 +11,8 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));        
   };
@@ -38,6 +40,9 @@ const Contact = () => {
 
       if (response.ok) {
         console.log('API request successful!');
+        setToastMessage('Message sent successfully!');
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
@@ -48,6 +53,9 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
+      setToastMessage('Opening your email app instead...');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
       // Fallback to mailto if API fails
       const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
       window.location.href = mailtoUrl;
@@ -63,6 +71,19 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Toast Notification */}
+      {showToast && (
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-3"
+        >
+          <span>{toastMessage}</span>
+          <button onClick={() => setShowToast(false)} className="hover:text-green-100">
+            <X size={18} />
+          </button>
+        </motion.div>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">    
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Get In <span className="text-gradient">Touch</span></h2>
