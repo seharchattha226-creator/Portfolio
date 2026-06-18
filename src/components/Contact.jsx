@@ -17,24 +17,33 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submitted!');
+    console.log('Form data:', formData);
     setStatus('loading');
 
     try {
       // First try backend API
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
-      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+      const url = `${apiBaseUrl}/api/contact`;
+      console.log('Sending request to:', url);
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
 
       if (response.ok) {
+        console.log('API request successful!');
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
       } else {
+        const errorData = await response.json();
+        console.error('API error response:', errorData);
         throw new Error('API request failed');
       }
     } catch (error) {
