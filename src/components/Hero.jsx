@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Github, Mail, Phone, ArrowRight, Download, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/constants';
+import resumePdf from '../assets/Sehar-Fiaz-Resume.pdf';
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -69,9 +70,9 @@ const Hero = () => {
             </motion.a>
             <motion.button
               onClick={() => {
-                // Force download with JavaScript
+                // Force download with JavaScript using imported PDF
                 const link = document.createElement('a');
-                link.href = '/Sehar-Fiaz-Resume.pdf';
+                link.href = resumePdf;
                 link.download = 'Sehar-Fiaz-Resume.pdf';
                 link.click();
               }}
