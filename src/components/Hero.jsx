@@ -67,18 +67,31 @@ const Hero = () => {
             >
               Contact Me
             </motion.a>
-            <motion.a
-              href="/Sehar-Fiaz-Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              download="Sehar-Fiaz-Resume.pdf"
+            <motion.button
+              onClick={async () => {
+                try {
+                  const response = await fetch("/Sehar-Fiaz-Resume.pdf");
+                  const blob = await response.blob();
+                  const url = window.URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = "Sehar-Fiaz-Resume.pdf";
+                  document.body.appendChild(a);
+                  a.click();
+                  a.remove();
+                  window.URL.revokeObjectURL(url);
+                } catch (err) {
+                  console.error(err);
+                  alert("Error downloading resume! Please try again.");
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:from-purple-600/30 hover:to-blue-600/30 flex items-center gap-2 transition-all duration-300"
             >
               <Download size={20} />
               Download Resume
-            </motion.a>
+            </motion.button>
           </div>
 
           <div className="flex items-center justify-center gap-6">
