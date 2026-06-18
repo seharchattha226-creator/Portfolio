@@ -19,7 +19,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Use Formspree for contact form (free and easy!)
+    // First, try Formspree
     const formspreeUrl = 'https://formspree.io/f/mleqyedq';
 
     try {
@@ -36,13 +36,19 @@ const Contact = () => {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
-      } else {
-        setStatus('error');
+        return;
       }
     } catch (error) {
-      console.error('Error sending message:', error);
-      setStatus('error');
+      console.error('Formspree error:', error);
     }
+
+    // Fallback: Open email client directly
+    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    window.location.href = mailtoUrl;
+    
+    setStatus('success');
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => setStatus('idle'), 3000);
   };
 
   // Format phone number for WhatsApp (remove + and spaces)
