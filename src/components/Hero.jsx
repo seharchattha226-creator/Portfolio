@@ -71,12 +71,13 @@ const Hero = () => {
               href="/Sehar-Fiaz-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              download="Sehar-Fiaz-Resume.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:from-purple-600/30 hover:to-blue-600/30 flex items-center gap-2 transition-all duration-300"
             >
               <Download size={20} />
-              View / Download Resume
+              Download Resume
             </motion.a>
           </div>
 
