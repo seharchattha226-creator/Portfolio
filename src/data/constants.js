@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   phone: "+92 3444856203",
   github: "https://github.com/seharchattha226-creator",
   linkedin: "https://www.linkedin.com/in/sehar-chattha-66195437a/",
-  resume: "https://example.com/sehar-fiaz-resume.pdf", // Add resume URL here
+  resume: "/Sehar-Fiaz-Resume.html", // Add resume URL here
   education: [
     {
       degree: "BS Human Nutrition & Dietetics",

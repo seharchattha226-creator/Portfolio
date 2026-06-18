@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sehar Fiaz - One Page CV</title>
+    <style>
+      :root {
+        --page-bg: #dfe1e4;
+        --paper: #f4f4f4;
+        --ink: #222;
+        --muted: #555;
+        --line: #8c8c8c;
+        --section: #e8e8e8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: Georgia, 'Times New Roman', serif;
+        padding: 18px;
+      }
+      .page {
+        width: 100%;
+        max-width: 920px;
+        margin: 0 auto;
+        background: var(--paper);
+        padding: 22px 42px 28px;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      }
+      .center { text-align: center; }
+      h1 {
+        margin: 0;
+        font-size: 30px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .role {
+        margin-top: 6px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .meta {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .meta-row {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        flex-wrap: wrap;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .rule {
+        border-top: 2px solid #a4a4a4;
+        margin: 14px 0 12px;
+      }
+      .section-title {
+        margin: 10px 0 12px;
+        background: var(--section);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 4px 8px;
+      }
+      p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .summary {
+        text-align: justify;
+      }
+      .entry {
+        margin-bottom: 13px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: baseline;
+        gap: 8px;
+        font-size: 13px;
+      }
+      .left-strong {
+        font-weight: 700;
+      }
+      .dots {
+        border-bottom: 1px dotted var(--line);
+        transform: translateY(-2px);
+      }
+      .right {
+        white-space: nowrap;
+        font-size: 12px;
+      }
+      .subrow {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      ul {
+        margin: 7px 0 0 20px;
+        padding: 0;
+      }
+      li {
+        font-size: 12.5px;
+        line-height: 1.45;
+        margin-bottom: 3px;
+      }
+      .edu-note, .project-note {
+        font-style: italic;
+        font-size: 12px;
+        color: #444;
+        margin-top: 2px;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px 18px;
+      }
+      .skill-line {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 8px;
+        font-size: 12.5px;
+      }
+      .skill-line .dots {
+        transform: none;
+      }
+      a { color: inherit; text-decoration: none; }
+      @media print {
+        body { background: white; padding: 0; }
+        .page { box-shadow: none; max-width: none; }
+      }
+      @media (max-width: 720px) {
+        .page { padding: 18px 18px 24px; }
+        .row { grid-template-columns: 1fr; }
+        .dots { display: none; }
+        .right { white-space: normal; }
+        .subrow { flex-direction: column; gap: 2px; }
+        .skills-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="center">
+        <h1>Sehar Fiaz</h1>
+        <div class="role">Full Stack Web Developer</div>
+        <div class="meta">Lahore, Pakistan</div>
+        <div class="meta-row">
+          <span>seharchattha226@gmail.com</span>
+          <span>+92 3444856203</span>
+          <span>github.com/seharchattha226-creator</span>
+        </div>
+      </header>
+
+      <div class="rule"></div>
+
+      <section>
+        <div class="section-title">Summary</div>
+        <p class="summary">
+          Results-driven <strong>Full Stack Web Developer</strong> with hands-on experience building responsive, user-focused <strong>web applications</strong>
+          using <strong>HTML5, CSS3, JavaScript, React.js, Tailwind CSS, Bootstrap, Node.js, Express.js, and MongoDB</strong>. Skilled in modern UI/UX,
+          reusable components, responsive design, Git/GitHub workflows, and deployment-ready projects, with strong practical experience in
+          <strong>frontend engineering, React development, and full stack project building</strong>.
+        </p>
+      </section>
+
+      <section>
+        <div class="section-title">Project Experience</div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://health-ai-zxgh.vercel.app/" target="_blank" rel="noopener noreferrer">Health AI</a> — <a href="https://health-ai-zxgh.vercel.app/" target="_blank" rel="noopener noreferrer">https://health-ai-zxgh.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">React.js · Tailwind CSS · JavaScript · Vite</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">AI Health Assistant Web Application</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Built a responsive health-focused web application with modern UI structure and user-friendly sections.</li>
+            <li>Created interactive features for wellness-related user journeys with clean component-based frontend development.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://voidcanvas-ai.vercel.app/" target="_blank" rel="noopener noreferrer">VoidCanvas AI</a> — <a href="https://voidcanvas-ai.vercel.app/" target="_blank" rel="noopener noreferrer">https://voidcanvas-ai.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">React.js · Tailwind CSS · JavaScript</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">SaaS Landing Page / Product UI</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Designed a modern SaaS-style landing page with polished sections, strong visual hierarchy, and responsive navigation.</li>
+            <li>Applied component-based frontend practices to create a clean and conversion-focused product presentation.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://nutri-fit-pro-fitness-nutrition-app-jnbg-hvpwxhsvt.vercel.app/" target="_blank" rel="noopener noreferrer">NutriFit Pro</a> — <a href="https://nutri-fit-pro-fitness-nutrition-app-jnbg-hvpwxhsvt.vercel.app/" target="_blank" rel="noopener noreferrer">https://nutri-fit-pro-fitness-nutrition-app-jnbg-hvpwxhsvt.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">Fitness & Nutrition Web App</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">Health / Fitness Platform</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Developed a fitness and nutrition focused project with a clean layout and engaging user experience.</li>
+            <li>Showcased frontend skills through responsive design, structured sections, and practical health-related presentation.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://confessly-ultimate.vercel.app/" target="_blank" rel="noopener noreferrer">Confession Platform</a> — <a href="https://confessly-ultimate.vercel.app/" target="_blank" rel="noopener noreferrer">https://confessly-ultimate.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">Social Platform Project</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">Anonymous Confession Platform</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Built a social-style web platform centered on anonymous user interaction and clean content presentation.</li>
+            <li>Focused on responsive interface design, usability, and a simple flow for an engaging user experience.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://aurexis-time-defined-5pfp.vercel.app/" target="_blank" rel="noopener noreferrer">AUREXIS</a> — <a href="https://aurexis-time-defined-5pfp.vercel.app/" target="_blank" rel="noopener noreferrer">https://aurexis-time-defined-5pfp.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">Luxury / Brand Landing Page</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">Modern Premium Frontend Project</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Created a premium-style website with elegant visual presentation, modern sections, and polished layout structure.</li>
+            <li>Demonstrated attention to branding, responsiveness, and frontend presentation quality for portfolio use.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ <a href="https://fintech-tyal.vercel.app/" target="_blank" rel="noopener noreferrer">FinTech</a> — <a href="https://fintech-tyal.vercel.app/" target="_blank" rel="noopener noreferrer">https://fintech-tyal.vercel.app/</a></div>
+            <div class="dots"></div>
+            <div class="right">Fintech Frontend Project</div>
+          </div>
+          <div class="subrow">
+            <div class="project-note">Finance / Product Landing Page</div>
+            <div>Lahore, Pakistan</div>
+          </div>
+          <ul>
+            <li>Developed a fintech-focused frontend project with modern layout, strong visual hierarchy, and smooth presentation.</li>
+            <li>Highlighted practical skills in responsive web design, clean styling, and professional landing page development.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Education</div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ Professional IT Skill College</div>
+            <div class="dots"></div>
+            <div class="right">Full Stack Web Development</div>
+          </div>
+          <div class="edu-note">Certification in Full Stack Web Development</div>
+        </div>
+
+        <div class="entry">
+          <div class="row">
+            <div class="left-strong">❖ Riphah International University Lahore</div>
+            <div class="dots"></div>
+            <div class="right">BS Human Nutrition & Dietetics</div>
+          </div>
+          <div class="edu-note">Bachelor's Degree</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Skills</div>
+        <div class="skills-grid">
+          <div class="skill-line"><span>React.js Development</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Responsive Web Design</span><span class="dots"></span></div>
+          <div class="skill-line"><span>JavaScript Development</span><span class="dots"></span></div>
+          <div class="skill-line"><span>UI/UX Design Principles</span><span class="dots"></span></div>
+          <div class="skill-line"><span>HTML5 / CSS3</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Tailwind CSS / Bootstrap</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Node.js / Express.js</span><span class="dots"></span></div>
+          <div class="skill-line"><span>MongoDB Basics</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Reusable Components</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Git / GitHub</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Portfolio Website Development</span><span class="dots"></span></div>
+          <div class="skill-line"><span>Deployment & Project Presentation</span><span class="dots"></span></div>
+        </div>
+      </section>
+    </main>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
