@@ -19,30 +19,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // First, try Formspree
-    const formspreeUrl = 'https://formspree.io/f/mleqyedq';
-
-    try {
-      const response = await fetch(formspreeUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
-        return;
-      }
-    } catch (error) {
-      console.error('Formspree error:', error);
-    }
-
-    // Fallback: Open email client directly
+    // Just open email client directly - 100% reliable!
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
     window.location.href = mailtoUrl;
     
