@@ -32,7 +32,6 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
           className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-3"
         >
           <span>Resume opened successfully!</span>
