@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Github, Mail, Phone, ArrowRight, Download, Linkedin } from 'lucide-react';
+import { Github, Mail, Phone, ArrowRight, Download, Linkedin, X } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/constants';
 
 const Hero = () => {
   const [text, setText] = useState("");
   const fullText = PERSONAL_INFO.role;
   const [index, setIndex] = useState(0);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     if (index < fullText.length) {
@@ -19,8 +20,28 @@ const Hero = () => {
     }
   }, [index, fullText]);
 
+  const handleViewResume = () => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Toast Notification */}
+      {showToast && (
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-3"
+        >
+          <span>Resume opened successfully!</span>
+          <button onClick={() => setShowToast(false)} className="hover:text-green-100">
+            <X size={18} />
+          </button>
+        </motion.div>
+      )}
+      
       {/* Background Blobs */}
       <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob"></div>
       <div className="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000"></div>
@@ -71,6 +92,7 @@ const Hero = () => {
               href="/Sehar-Fiaz-Resume.html"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleViewResume}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:from-purple-600/30 hover:to-blue-600/30 flex items-center gap-2 transition-all duration-300"
