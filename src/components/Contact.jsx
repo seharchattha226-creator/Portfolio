@@ -56,9 +56,13 @@ const Contact = () => {
       setToastMessage('Opening your email app instead...');
       setShowToast(true);
       setTimeout(() => setShowToast(false), 3000);
-      // Fallback to mailto if API fails
+      // Fallback to mailto if API fails (more reliable with window.open)
       const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      window.location.href = mailtoUrl;
+      try {
+        window.open(mailtoUrl, '_blank');
+      } catch (e) {
+        window.location.href = mailtoUrl;
+      }
       
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
