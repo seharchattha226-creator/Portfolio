@@ -39,7 +39,8 @@ const Contact = () => {
       console.log('Response ok:', response.ok);
 
       if (response.ok) {
-        console.log('API request successful!');
+        const responseData = await response.json();
+        console.log('API request successful! Response:', responseData);
         setToastMessage('Message sent successfully!');
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
@@ -53,20 +54,12 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      setToastMessage('Opening your email app instead...');
+      console.error('Error details:', error.message);
+      setToastMessage('Error sending message. Please try again.');
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-      // Fallback to mailto if API fails (more reliable with window.open)
-      const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      try {
-        window.open(mailtoUrl, '_blank');
-      } catch (e) {
-        window.location.href = mailtoUrl;
-      }
-      
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
+      setTimeout(() => setShowToast(false), 5000);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
