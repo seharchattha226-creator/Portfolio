@@ -33,6 +33,9 @@ const Contact = () => {
         const url = `${apiBaseUrl}/api/contact`;
         console.log('Sending request to:', url);
         console.log('Form data being sent:', formData);
+        console.log('📡 Using BACKEND API');
+        setToastMessage('📡 Sending via backend...');
+        setShowToast(true);
         const response = await fetch(url, {
           method: 'POST',
           headers: {
@@ -46,9 +49,9 @@ const Contact = () => {
         if (response.ok) {
           const responseData = await response.json();
           console.log('API request successful! Response:', responseData);
-          setToastMessage('✅ Message sent successfully! Check Gmail Sent!');
+          setToastMessage('✅ Message sent to Gmail! Check Sent folder!');
           setShowToast(true);
-          setTimeout(() => setShowToast(false), 5000);
+          setTimeout(() => setShowToast(false), 6000);
           setStatus('success');
           setFormData({ name: '', email: '', subject: '', message: '' });
           setTimeout(() => setStatus('idle'), 3000);
@@ -60,8 +63,8 @@ const Contact = () => {
     }
 
     // Live Vercel OR local API failed: Use mailto
-    console.log('Using mailto for message');
-    setToastMessage('Opening your email app...');
+    console.log('📧 Using MAILTO (no backend)');
+    setToastMessage('📧 Opening your email app...');
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
