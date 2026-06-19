@@ -8,6 +8,7 @@ const Hero = () => {
   const fullText = PERSONAL_INFO.role;
   const [index, setIndex] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
     if (index < fullText.length) {
@@ -21,8 +22,33 @@ const Hero = () => {
   }, [index, fullText]);
 
   const handleViewResume = () => {
+    setToastMessage("Resume opened successfully!");
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
+  };
+
+  const handleDownloadResume = async () => {
+    try {
+      const response = await fetch("/Sehar-Fiaz-Resume.html");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Sehar-Fiaz-Resume.html";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
+      setToastMessage("Resume downloaded successfully!");
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+    } catch (err) {
+      console.error(err);
+      setToastMessage("Error downloading resume! Please try again.");
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+    }
   };
 
   return (
@@ -34,7 +60,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-xl shadow-xl z-50 flex items-center gap-3"
         >
-          <span>Resume opened successfully!</span>
+          <span>{toastMessage}</span>
           <button onClick={() => setShowToast(false)} className="hover:text-green-100">
             <X size={18} />
           </button>
@@ -94,11 +120,19 @@ const Hero = () => {
               onClick={handleViewResume}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+            >
+              View Resume
+            </motion.a>
+            <motion.button
+              onClick={handleDownloadResume}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-white font-bold rounded-2xl backdrop-blur-sm hover:from-purple-600/30 hover:to-blue-600/30 flex items-center gap-2 transition-all duration-300"
             >
               <Download size={20} />
-              View Resume
-            </motion.a>
+              Download Resume
+            </motion.button>
           </div>
 
           <div className="flex items-center justify-center gap-6">
