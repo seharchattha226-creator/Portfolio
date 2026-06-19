@@ -1,1 +1,5 @@
-backend
+# Ignore backend folder
+backend/
+
+# Ignore node_modules
+node_modules/
