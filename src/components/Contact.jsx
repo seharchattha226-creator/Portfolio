@@ -23,49 +23,51 @@ const Contact = () => {
     console.log('Form data:', formData);
     setStatus('loading');
 
-    try {
-      // First try backend API
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
-      const url = `${apiBaseUrl}/api/contact`;
-      console.log('Sending request to:', url);
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
+    // Check if we're on localhost (local development)
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('API request successful! Response:', responseData);
-        setToastMessage('Message sent successfully!');
-        setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
-        setStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
-      } else {
-        const errorData = await response.json();
-        console.error('API error response:', errorData);
-        throw new Error('API request failed');
+    if (isLocalhost) {
+      // Local: Try backend API first
+      try {
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
+        const url = `${apiBaseUrl}/api/contact`;
+        console.log('Sending request to:', url);
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log('API request successful! Response:', responseData);
+          setToastMessage('Message sent successfully!');
+          setShowToast(true);
+          setTimeout(() => setShowToast(false), 3000);
+          setStatus('success');
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setTimeout(() => setStatus('idle'), 3000);
+          return;
+        }
+      } catch (error) {
+        console.error('Local API failed, falling back to mailto:', error);
       }
-    } catch (error) {
-      console.error('Error sending message via API:', error);
-      console.error('Falling back to mailto...');
-      // Fallback to mailto - no extra tabs, just show success toast
-      setToastMessage('Opening your email app...');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
-      const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      // Open mailto in same tab to prevent extra window
-      window.location.href = mailtoUrl;
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
     }
+
+    // Live Vercel OR local API failed: Use mailto
+    console.log('Using mailto for message');
+    setToastMessage('Opening your email app...');
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    window.location.href = mailtoUrl;
+    setStatus('success');
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => setStatus('idle'), 3000);
   };
 
   // Format phone number for WhatsApp (remove + and spaces)
