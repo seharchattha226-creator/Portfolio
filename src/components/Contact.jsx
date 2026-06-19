@@ -53,13 +53,18 @@ const Contact = () => {
         throw new Error('API request failed');
       }
     } catch (error) {
-      console.error('Error sending message:', error);
-      console.error('Error details:', error.message);
-      setToastMessage('Error sending message. Please try again.');
+      console.error('Error sending message via API:', error);
+      console.error('Falling back to mailto...');
+      // Fallback to mailto - no extra tabs, just show success toast
+      setToastMessage('Opening your email app...');
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 5000);
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => setShowToast(false), 3000);
+      const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+      // Open mailto in same tab to prevent extra window
+      window.location.href = mailtoUrl;
+      setStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
