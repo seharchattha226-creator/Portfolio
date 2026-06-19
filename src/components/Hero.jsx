@@ -21,12 +21,6 @@ const Hero = () => {
     }
   }, [index, fullText]);
 
-  const handleViewResume = () => {
-    setToastMessage("Resume opened successfully!");
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-  };
-
   const handleDownloadResume = async () => {
     try {
       const response = await fetch("/Sehar-Fiaz-Resume.html");
@@ -112,17 +106,6 @@ const Hero = () => {
               className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
             >
               Contact Me
-            </motion.a>
-            <motion.a
-              href="/Sehar-Fiaz-Resume.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleViewResume}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
-            >
-              View Resume
             </motion.a>
             <motion.button
               onClick={handleDownloadResume}
