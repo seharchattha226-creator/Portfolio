@@ -32,6 +32,7 @@ const Contact = () => {
         const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
         const url = `${apiBaseUrl}/api/contact`;
         console.log('Sending request to:', url);
+        console.log('Form data being sent:', formData);
         const response = await fetch(url, {
           method: 'POST',
           headers: {
@@ -45,9 +46,9 @@ const Contact = () => {
         if (response.ok) {
           const responseData = await response.json();
           console.log('API request successful! Response:', responseData);
-          setToastMessage('Message sent successfully!');
+          setToastMessage('✅ Message sent successfully! Check Gmail Sent!');
           setShowToast(true);
-          setTimeout(() => setShowToast(false), 3000);
+          setTimeout(() => setShowToast(false), 5000);
           setStatus('success');
           setFormData({ name: '', email: '', subject: '', message: '' });
           setTimeout(() => setStatus('idle'), 3000);
