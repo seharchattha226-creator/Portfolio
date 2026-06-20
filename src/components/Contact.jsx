@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle, X } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/constants';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,47 +24,46 @@ const Contact = () => {
     console.log('Form data:', formData);
     setStatus('loading');
 
-    // Check if we're on localhost (local development)
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    // Check if EmailJS credentials are available
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    if (isLocalhost) {
-      // Local: Try backend API first
+    if (serviceId && templateId && publicKey) {
+      // Use EmailJS
       try {
-        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
-        const url = `${apiBaseUrl}/api/contact`;
-        console.log('Sending request to:', url);
-        console.log('Form data being sent:', formData);
-        console.log('📡 Using BACKEND API');
-        setToastMessage('📡 Sending via backend...');
+        setToastMessage('📡 Sending message...');
         setShowToast(true);
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message
           },
-          body: JSON.stringify(formData),
-        });
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
-
-        if (response.ok) {
-          const responseData = await response.json();
-          console.log('API request successful! Response:', responseData);
-          setToastMessage('✅ Message sent to Gmail! Check Sent folder!');
-          setShowToast(true);
-          setTimeout(() => setShowToast(false), 6000);
-          setStatus('success');
-          setFormData({ name: '', email: '', subject: '', message: '' });
-          setTimeout(() => setStatus('idle'), 3000);
-          return;
-        }
+          publicKey
+        );
+        
+        console.log('EmailJS request successful!');
+        setToastMessage('✅ Message sent successfully!');
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 6000);
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+        return;
       } catch (error) {
-        console.error('Local API failed, falling back to mailto:', error);
+        console.error('EmailJS failed, falling back to mailto:', error);
       }
+    } else {
+      console.log('EmailJS credentials not set, falling back to mailto');
     }
 
-    // Live Vercel OR local API failed: Use mailto
-    console.log('📧 Using MAILTO (no backend)');
+    // Fallback to mailto
+    console.log('📧 Using MAILTO');
     setToastMessage('📧 Opening your email app...');
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
