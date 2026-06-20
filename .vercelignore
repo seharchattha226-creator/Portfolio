@@ -1,5 +1,8 @@
-# Ignore backend folder
 backend/
-
-# Ignore node_modules
 node_modules/
+.env
+.env.local
+.git
+.gitignore
+README.md
+PORT=5001.txt
