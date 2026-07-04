@@ -39,6 +39,7 @@ import travelExplorer from '../assets/images/travel-explorer.jpg';
 import uniqueWeb from '../assets/images/unique-web.jpg';
 import cynthiaUgwu from '../assets/images/cynthia-ugwu-clone.png';
 import model3D from '../assets/images/3D-model.jpg';
+import startupCoFounder from '../assets/images/Startup Co-Founder.png';
 
 export const SKILLS = [
   { name: "HTML5", level: 95, category: "Frontend" },
@@ -56,6 +57,18 @@ export const SKILLS = [
 export const PROJECTS = [
   {
     id: 1,
+    title: "Founderlink AI",
+    category: "AI",
+    description: "AI-powered platform connecting startup founders with compatible co-founders using intelligent matching algorithms and networking features.",
+    image: startupCoFounder,
+    tech: ["React.js", "AI/ML", "Tailwind CSS", "Node.js"],
+    linkedin: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7479021857879470081/",
+    github: "https://github.com/seharchattha226-creator/Founderlink-ai.git",
+    live: "https://founderlink-ai.vercel.app/",
+    featured: true
+  },
+  {
+    id: 2,
     title: "Dog Clone",
     category: "3D",
     description: "An immersive 3D dog-themed digital experience featuring smooth animations and high-quality rendering using modern web technologies.",
@@ -67,7 +80,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 2,
+    id: 3,
     title: "Void Canva",
     category: "AI",
     description: "A creative AI platform designed for digital artists and designers to generate and visualize unique artistic concepts seamlessly.",
@@ -79,7 +92,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 3,
+    id: 4,
     title: "Health AI",
     category: "Healthcare",
     description: "Intelligent healthcare solution utilizing AI to provide diagnostic insights and health recommendations for modern users.",
@@ -91,7 +104,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 4,
+    id: 5,
     title: "Unique Web",
     category: "Web App",
     description: "A highly interactive and modern web application focusing on exceptional user experience and cutting-edge design patterns.",
@@ -103,7 +116,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 5,
+    id: 6,
     title: "Crypto Website",
     category: "Crypto",
     description: "A comprehensive cryptocurrency dashboard featuring real-time data tracking, interactive charts, and secure user interface.",
@@ -115,7 +128,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 6,
+    id: 7,
     title: "Cynthia Ugwu Clone",
     category: "Clone",
     description: "A high-fidelity clone of the award-winning Cynthia Ugwu website, showcasing mastery in complex animations and layout.",
@@ -127,7 +140,7 @@ export const PROJECTS = [
     featured: true
   },
   {
-    id: 7,
+    id: 8,
     title: "Confession Platform",
     category: "Web App",
     description: "An anonymous social platform allowing users to share thoughts and experiences in a safe, moderated digital environment.",
@@ -139,7 +152,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 8,
+    id: 9,
     title: "Aurexis",
     category: "Luxury",
     description: "Premium watch brand showcase with elegant design, scroll-triggered animations, and high-end aesthetic appeal.",
@@ -151,7 +164,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 9,
+    id: 10,
     title: "Nutri Fit",
     category: "Fitness",
     description: "Holistic fitness and nutrition application providing personalized workout and meal plans based on user health data.",
@@ -163,7 +176,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 10,
+    id: 11,
     title: "Ecosphere",
     category: "Luxury",
     description: "Environmentally conscious high-end platform showcasing sustainable luxury products and initiatives.",
@@ -175,7 +188,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 11,
+    id: 12,
     title: "Travel Explorer",
     category: "Travel",
     description: "Immersive travel planning platform with interactive maps and curated destination guides for modern explorers.",
@@ -187,7 +200,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 12,
+    id: 13,
     title: "FinTech 3D",
     category: "FinTech",
     description: "Modern financial technology landing page with interactive 3D elements and secure data visualization components.",
@@ -199,7 +212,7 @@ export const PROJECTS = [
     featured: false
   },
   {
-    id: 13,
+    id: 14,
     title: "3D Website",
     category: "3D",
     description: "Advanced 3D website demonstration showcasing smooth navigation and complex spatial layouts in a browser environment.",
